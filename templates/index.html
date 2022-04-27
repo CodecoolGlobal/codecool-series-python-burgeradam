@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <title>CsED</title>
+    <title>
+    {% block title %}CsED{% endblock %}
+    </title>
 
     <!-- Import Montserrat font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
@@ -41,7 +43,10 @@
         </div>
     </header>
     <section>
+        {% block h1 %}
         <h1 class="title text-center">Welcome page</h1>
+        {% endblock %}
+        {% block content %}
         <div class="card">
             <h2>Welcome TV show lovers!</h2>
             <p>This great site is happy to bring you your favourite TV show's <i>details</i>.</p>
@@ -52,7 +57,9 @@
                 navigation.
             </p>
         </div>
+        {% endblock %}
         <div class="card">
+        {% block table %}
             <ul>
                 {% for show in shows %}
                     <li>
@@ -60,6 +67,7 @@
                     </li>
                 {% endfor %}
             </ul>
+        {% endblock %}
         </div>
     </section>
     <footer>
