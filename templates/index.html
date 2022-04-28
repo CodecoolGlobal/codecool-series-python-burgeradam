@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-
+    {% block script %}
+    {% endblock %}
     <title>
     {% block title %}CsED{% endblock %}
     </title>
@@ -27,6 +28,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style/form.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style/grid.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style/utils.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/pagination.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/detailed-view.css') }}">
 
     <!-- page specific styling -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style/detailed-view.css') }}">
@@ -56,6 +59,7 @@
                 in-depth
                 navigation.
             </p>
+            <p><a href="/shows/most-rated">Go to most-rated shows page</a></p>
         </div>
         {% endblock %}
         <div class="card">
@@ -68,6 +72,9 @@
                 {% endfor %}
             </ul>
         {% endblock %}
+        </div>
+        <div class="card">
+            <div class="pagination"></div>
         </div>
     </section>
     <footer>

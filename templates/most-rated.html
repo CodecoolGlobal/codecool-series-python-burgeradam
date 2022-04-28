@@ -1,44 +1,23 @@
 {% extends 'index.html' %}
 {% block title %}Most-rated shows{% endblock %}
-{% block h1 %}Dikk{% endblock %}
+{% block script %}
+    <script src="{{ url_for('static', filename='js/most-rated.js') }}" type="module" defer></script>
+{% endblock %}
+{% block h1 %}Most-rated Shows{% endblock %}
 {% block content %}{% endblock %}
 {% block table %}
     <table>
         <thead>
             <tr>
-                <th>Title</th>
-                <th>Release year</th>
-                <th>Runtime (min)</th>
-                <th>Rating</th>
+                <th header_name="title" direction="">Title</th>
+                <th header_name="year" direction="">Release year</th>
+                <th header_name="runtime" direction="">Runtime (min)</th>
+                <th header_name="rating" direction="DESC">Rating</th>
                 <th>Genres</th>
                 <th>Trailer</th>
                 <th>Homepage</th>
             </tr>
         </thead>
-        <tbody>
-            {% for show in shows %}
-                    <tr>
-                    <td><a href="{{ '/show/' + (show['id'] | string) }}">{{ show['title'] }}</a></td>
-                    <td>{{ show['year'] }}</td>
-                    <td>{{ show['runtime'] }}</td>
-                    <td>{{ show['rating'] }}</td>
-                    <td>{{ show['genres'] }}</td>
-                    <td>
-                        {% if show['trailer'] %}
-                            <a href="{{ show['trailer'] }}" target="_blank">{{ show['trailer'] }}</a>
-                        {% else %}
-                            no URL
-                        {% endif %}
-                    </td>
-                    <td>
-                        {% if show['homepage'] %}
-                            <a href="{{ show['homepage'] }}" target="_blank">{{ show['homepage'] }}</a>
-                        {% else %}
-                            no URL
-                        {% endif %}
-                    </td>
-                    </tr>
-                {% endfor %}
-        </tbody>
+        <tbody></tbody>
     </table>
 {% endblock %}
