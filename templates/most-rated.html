@@ -2,6 +2,7 @@
 {% block title %}Most-rated shows{% endblock %}
 {% block script %}
     <script src="{{ url_for('static', filename='js/most-rated.js') }}" type="module" defer></script>
+    <script src="https://kit.fontawesome.com/f85f6931c2.js" crossorigin="anonymous"></script>
 {% endblock %}
 {% block h1 %}Most-rated Shows{% endblock %}
 {% block content %}{% endblock %}
@@ -9,10 +10,14 @@
     <table>
         <thead>
             <tr>
-                <th header_name="title" direction="">Title</th>
-                <th header_name="year" direction="">Release year</th>
-                <th header_name="runtime" direction="">Runtime (min)</th>
-                <th header_name="rating" direction="DESC">Rating</th>
+                <th header_name="title" direction="">Title <span class="sort-icon"></span>
+                </th>
+                <th header_name="year" direction="">Release year <span class="sort-icon"></span>
+                </th>
+                <th header_name="runtime" direction="">Runtime (min) <span class="sort-icon"></span>
+                </th>
+                <th header_name="rating" direction="DESC">Rating <span class="sort-icon"></span>
+                </th>
                 <th>Genres</th>
                 <th>Trailer</th>
                 <th>Homepage</th>
@@ -20,4 +25,6 @@
         </thead>
         <tbody></tbody>
     </table>
+    <i class='fas fa-angle-double-down' style='color: white'></i>  {# down arrow #}
+    <i class='fas fa-angle-double-up' style='color: white'></i>  {# up arrow #}
 {% endblock %}

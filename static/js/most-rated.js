@@ -116,13 +116,31 @@ const sorting = () => {
                 paginationInfo.sortingSelector = headerName
                 paginationInfo.sortingDirection = 'DESC'
                 element.setAttribute('direction', '')
+                const spanDiv = element.children[0]
+                removeArrows()
+                const content = `<i class='fas fa-angle-double-down' style='color: white'></i>`
+                spanDiv.insertAdjacentHTML('beforeend', content)
             } else {
                 createTable(0, headerName, 'ASC')
                 paginationInfo.sortingSelector = headerName
                 paginationInfo.sortingDirection = 'ASC'
                 element.setAttribute('direction', 'DESC')
+                const spanDiv = element.children[0]
+                removeArrows()
+                const content = `<i class='fas fa-angle-double-up' style='color: white'></i>`
+                spanDiv.insertAdjacentHTML('beforeend', content)
             }
         })
+    })
+}
+
+const removeArrows = () => {
+    const th_list = document.querySelectorAll('th[header_name]')
+    th_list.forEach(element => {
+        const elementChild = element.children[0]
+        if (elementChild.children[0]) {
+            elementChild.removeChild(elementChild.children[0])
+        }
     })
 }
 
