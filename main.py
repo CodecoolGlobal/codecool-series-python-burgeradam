@@ -21,7 +21,7 @@ def design():
 
 @app.route('/shows/episodes')
 def count_episodes():
-    return render_template('')
+    return render_template('episodes.html')
 
 
 def main():
