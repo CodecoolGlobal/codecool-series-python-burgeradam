@@ -16,8 +16,8 @@ def get_most_rated_shows(offset=0, selector='rating', filter_direction='DESC'):
                     trailer,
                     homepage
             FROM shows
-            INNER JOIN show_genres ON shows.id = show_genres.show_id
-            INNER JOIN genres ON show_genres.genre_id = genres.id
+            LEFT JOIN show_genres ON shows.id = show_genres.show_id
+            LEFT JOIN genres ON show_genres.genre_id = genres.id
             GROUP BY title, year, rating, runtime, trailer, homepage
             ORDER BY 
                 (CASE WHEN {selector} = 'rating' AND {filter_direction} = 'DESC' THEN rating END) DESC,

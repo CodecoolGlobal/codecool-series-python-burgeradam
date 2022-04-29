@@ -56,8 +56,8 @@ const createTable = async (offset = 0,
 const pagination = async () => {
     dataHandler.getLength()
         .then(all_show_length => {
-            const allRecord = all_show_length[0].count
-            const allPages = Math.floor(all_show_length[0].count / 15)  //988 records were found instead of 1011
+            const allRecord = all_show_length[0].count      // 1011
+            const allPages = Math.ceil(all_show_length[0].count / 15)
             for (let page = -1; page < allPages + 1; page++) {
                 if (page === allPages) {
                     const nextButton = document.createElement('a')
@@ -65,7 +65,7 @@ const pagination = async () => {
                     const paginationDiv = document.querySelector('div[class=pagination]')
                     paginationDiv.append(nextButton)
                     nextButton.addEventListener('click', () => {
-                        if (paginationInfo.button < allRecord) {
+                        if (paginationInfo.button < allRecord && ( allRecord - paginationInfo.button ) > 15) {
                             flushTableContent()
                             paginationInfo.button += 15
                             createTable(paginationInfo.button)
