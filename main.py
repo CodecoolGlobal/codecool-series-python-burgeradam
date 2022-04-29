@@ -24,6 +24,12 @@ def count_episodes():
     return render_template('episodes.html')
 
 
+@app.route('/api/episodes')
+def get_episodes():
+    a = queries.get_all_shows_plus_episode_count()
+    return jsonify(a)
+
+
 def main():
     app.run(debug=False)
 
