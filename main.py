@@ -19,6 +19,11 @@ def design():
     return render_template('design.html')
 
 
+@app.route('/show/<id>')
+def show_details(id):
+    return render_template('show_details.html')
+
+
 @app.route('/shows')
 @app.route('/shows/most-rated')
 def most_rated_shows():
