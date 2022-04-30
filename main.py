@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, jsonify
 from data import queries
 import math
 from dotenv import load_dotenv
@@ -11,6 +11,17 @@ app = Flask('codecool_series')
 def index():
     shows = queries.get_shows()
     return render_template('index.html', shows=shows)
+
+
+@app.route('/years')
+def years():
+    filtered_years = queries.list_all_year()
+    return render_template('what_a_year.html', filtered_years=filtered_years)
+
+
+@app.route('/api/years')
+def get_years():
+    return jsonify(queries.list_all_year())
 
 
 @app.route('/design')

@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% block script %}
+    <script src="{{ url_for('static', filename='./js/what_a_year.js') }}" type="module" defer></script>
+{% endblock %}
+{% block content %}
+    {% for year in filtered_years %}
+        <div class="box">
+            <table>
+                <tr>
+                    <td>
+                        <div>{{ year.years }}</div>
+                        <div rating>{{ year.rating }}</div>
+                        <div>{{ year.title }} shows</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    {% endfor %}
+    <div rating_aggregation></div>
+{% endblock %}

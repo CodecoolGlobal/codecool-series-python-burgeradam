@@ -1,0 +1,20 @@
+section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+table {
+    border: 2px solid black;
+    border-radius: 15px;
+    max-width: 200px;
+    height: 128px;
+    background: #c9c9c9
+}
+
+.box {
+    margin: 5px;
+}
+
+.marked {
+    background: yellow;
+}

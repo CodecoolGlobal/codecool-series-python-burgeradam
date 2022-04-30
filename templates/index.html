@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-
+    {% block script %}{% endblock %}
     <title>CsED</title>
 
     <!-- Import Montserrat font -->
@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style/form.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style/grid.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style/utils.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/what_a_year.css') }}">
 
     <!-- page specific styling -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style/detailed-view.css') }}">
@@ -41,6 +42,7 @@
         </div>
     </header>
     <section>
+    {% block content %}
         <h1 class="title text-center">Welcome page</h1>
         <div class="card">
             <h2>Welcome TV show lovers!</h2>
@@ -51,6 +53,7 @@
                 in-depth
                 navigation.
             </p>
+            <a href="/years">DIKK</a>
         </div>
         <div class="card">
             <ul>
@@ -61,6 +64,7 @@
                 {% endfor %}
             </ul>
         </div>
+    {% endblock %}
     </section>
     <footer>
         Copyright, bla-bla
