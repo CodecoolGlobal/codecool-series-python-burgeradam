@@ -27,7 +27,6 @@ const createTable = async (offset = 0,
         .then(shows => {
             const tbody = document.querySelector('tbody')
             const headers = ['title', 'year', 'runtime', 'rating', 'genres', 'trailer', 'homepage']
-
             for (let length = 0; length < shows.length; length++) {
                 const tr = document.createElement('tr')
                 tbody.append(tr)
@@ -37,15 +36,21 @@ const createTable = async (offset = 0,
                     tr.append(tdTitle)
                     if (!shows[length][headers[i]]) {
                         tdTitle.innerText = "no URL"
-                    } else if (Object.values(headers)[i] === 'title' ||
-                        Object.values(headers)[i] === 'trailer' ||
+                    } else if (Object.values(headers)[i] === 'trailer' ||
                         Object.values(headers)[i] === 'homepage') {
                         const link = document.createElement('a')
                         tdTitle.append(link)
                         link.setAttribute('target', '_blank')
                         link.setAttribute('href', shows[length][headers[i]])
                         link.innerText = shows[length][headers[i]]
-                    } else {
+                    } else if (Object.values(headers)[i] === 'title') {
+                        const link = document.createElement('a')
+                        tdTitle.append(link)
+                        link.setAttribute('target', '_blank')
+                        link.setAttribute('href', shows[length]['id'])
+                        link.innerText = shows[length][headers[i]]
+                    }
+                    else {
                         tdTitle.innerText = shows[length][headers[i]]
                     }
                 }

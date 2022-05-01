@@ -8,7 +8,7 @@ def get_shows():
 
 def get_most_rated_shows(offset=0, selector='rating', filter_direction='DESC'):
     return data_manager.execute_select(sql.SQL('''
-            SELECT  title,
+            SELECT  title, shows.id,
                     EXTRACT(YEAR from year)::numeric AS year,
                     runtime,
                     ROUND ( rating, 1 ) AS rating,
@@ -18,7 +18,7 @@ def get_most_rated_shows(offset=0, selector='rating', filter_direction='DESC'):
             FROM shows
             LEFT JOIN show_genres ON shows.id = show_genres.show_id
             LEFT JOIN genres ON show_genres.genre_id = genres.id
-            GROUP BY title, year, rating, runtime, trailer, homepage
+            GROUP BY title, shows.id, year, rating, runtime, trailer, homepage
             ORDER BY 
                 (CASE WHEN {selector} = 'rating' AND {filter_direction} = 'DESC' THEN rating END) DESC,
                 (CASE WHEN {selector} = 'rating' AND {filter_direction} = 'ASC' THEN rating END) ASC,
