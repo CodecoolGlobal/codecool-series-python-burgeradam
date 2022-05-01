@@ -5,7 +5,6 @@ let i = -1
 const counter = (element) => {
     if (element) {
         i++
-        return i
     }
     return i
 }
