@@ -1,12 +1,33 @@
-const row = document.querySelectorAll('td[title]')
-row.forEach(element => {
-    element.addEventListener('mouseenter', () => {
-        const get_td = document.querySelectorAll('td[actors]')
+const rowTitle = document.querySelectorAll('td[title]')
+const rowActors = document.querySelectorAll('td[actors]')
+let i = -1
 
-        get_td.classList.add('colorize')
+const counter = (element) => {
+    if (element) {
+        i++
+        return i
+    }
+    return i
+}
+
+rowTitle.forEach(element => {
+    const index = counter(element)
+    element.addEventListener('mouseenter', () => {
+        rowActors[index].classList.add('colorize')
     })
     element.addEventListener('mouseout', () => {
-        const get_td = document.querySelector('td[actors]')
-        get_td.classList.remove('colorize')
+        rowActors[index].classList.remove('colorize')
+    })
+})
+
+
+i = -1
+rowActors.forEach(element => {
+    const index = counter(element)
+    element.addEventListener('mouseenter', () => {
+        rowTitle[index].classList.add('colorize')
+    })
+    element.addEventListener('mouseout', () => {
+        rowTitle[index].classList.remove('colorize')
     })
 })
