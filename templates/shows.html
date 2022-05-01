@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+{% block script %}
+    <script src="{{ url_for('static', filename='./js/shows.js') }}" type="module" defer></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/shows.css') }}">
+{% endblock %}
+{% block content %}
+    <div class="top10">
+        <table title>
+            <thead>
+            <th>Title</th>
+            <th>Overall runtime</th>
+            </thead>
+            <tbody>
+            {% for title in get_top10_shows %}
+                <tr>
+                    <td title="{{ get_top10_shows.index(title) }}">{{ title.title }}</td>
+                    <td>{{ title.runtime }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table actors>
+            <thead>
+                <th>Actors</th>
+            </thead>
+            <tbody>
+                {% for actors in get_actors %}
+                    <tr>
+                        <td actors="{{ get_actors.index(actors) }}">{{ actors.actors }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

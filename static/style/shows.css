@@ -1,0 +1,12 @@
+.top10 {
+    display: flex;
+    flex-direction: row;
+}
+
+.top10 table {
+    margin: 5px;
+}
+
+.colorize {
+    background: blueviolet;
+}
