@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-
+    {% block script %}
+    {% endblock %}
     <title>CsED</title>
 
     <!-- Import Montserrat font -->
@@ -41,6 +42,7 @@
         </div>
     </header>
     <section>
+    {% block content %}
         <h1 class="title text-center">Welcome page</h1>
         <div class="card">
             <h2>Welcome TV show lovers!</h2>
@@ -61,6 +63,7 @@
                 {% endfor %}
             </ul>
         </div>
+    {% endblock %}
     </section>
     <footer>
         Copyright, bla-bla

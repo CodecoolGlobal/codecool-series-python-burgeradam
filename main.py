@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, jsonify
 from data import queries
 import math
 from dotenv import load_dotenv
@@ -16,6 +16,16 @@ def index():
 @app.route('/design')
 def design():
     return render_template('design.html')
+
+
+@app.route('/search')
+def search():
+    return render_template('average_actors.html')
+
+
+@app.route('/api/get_year/<user_input>')
+def average_actors(user_input):
+    return jsonify(queries.average_actors(user_input))
 
 
 def main():
