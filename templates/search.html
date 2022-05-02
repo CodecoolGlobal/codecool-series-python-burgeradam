@@ -1,7 +1,24 @@
 {% extends 'index.html' %}
 {% block script %}
-    <script src="{{ url_for('static', filename='./js/search.js') }}"></script>
+    <script src="{{ url_for('static', filename='./js/search.js') }}" defer type="module"></script>
+{#    <script src="{{ url_for('static', filename='./js/embed-youtube.js') }}" defer></script>#}
 {% endblock %}
 {% block content %}
-    <div class="card"></div>
+    <div class="card">
+        <form>
+            <label for="input_field">
+                <input type="search" id="input_field">
+            </label>
+        </form>
+    </div>
+{#    <div class="modal">#}
+{#        <div class="modal_header">#}
+{#            <span>Trailer</span>#}
+{#            <span><button class="close">X</button></span>#}
+{#        </div>#}
+{##}
+{#        <div class="modal_body">#}
+{#            <div id="player"></div>#}
+{#        </div>#}
+{#    </div>#}
 {% endblock %}

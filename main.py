@@ -23,7 +23,7 @@ def search():
     return render_template('search.html')
 
 
-@app.route('/api/search/<usr_input>', methods=['GET', 'POST'])
+@app.route('/api/search/<usr_input>', methods=['POST'])
 def api_search(usr_input):
     return jsonify(queries.search(usr_input))
 
