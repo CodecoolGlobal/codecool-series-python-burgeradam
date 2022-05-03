@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% block script %}
+    <script src="{{ url_for('static', filename='js/genres.js') }}" defer type="module"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Rating</th>
+                <th>Number of actors</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for element in query %}
+                <tr data-show-id="{{ element.id }}">
+                    <td>{{ element.title }}</td>
+                    <td>{{ element.rating }}</td>
+                    <td>{{ element.number_of_actors }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}
