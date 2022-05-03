@@ -1,11 +1,11 @@
 import {dataHandler} from "./dataHandler.js";
 
 const getAllShows = document.querySelectorAll('tr[data-show-id]')
-const section = document.querySelector('.card')
+const divCard = document.querySelector('.card')
 
 
 getAllShows.forEach( (element) => {
-    element.addEventListener('mouseenter', mouseEnterHandler)
+    element.addEventListener('mouseenter', mouseEnterHandler, {capture: true})  // false - bubbling upwards (default), true - bubbling downwards, capture is not necessary
     element.addEventListener('mouseout', () => {
         deleteTable()
     })
@@ -22,7 +22,7 @@ function mouseEnterHandler (e) {
 function deleteTable () {
     const getActorsTable = document.querySelector('table#actors')
     if (getActorsTable) {
-        section.removeChild(getActorsTable)
+        divCard.removeChild(getActorsTable)
     }
 }
 
@@ -30,7 +30,7 @@ function createActorTable (data) {
     deleteTable()
     const table = cr('table')
     table.id = 'actors'
-    section.append(table)
+    divCard.append(table)
     const thead = cr('thead')
     const tbody = cr('tbody')
     table.append(thead, tbody)
