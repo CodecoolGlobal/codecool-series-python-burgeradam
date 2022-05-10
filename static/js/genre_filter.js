@@ -13,6 +13,7 @@ function dataHandling(element) {
     dataHandler.getFilteredShow(genreId)
         .then(data => {
             divCard.innerHTML = ''
+            debugger
             createTable(data)
         })
 }
@@ -30,9 +31,9 @@ function createTable(data) {
     const thead = createElment('thead')
     const trHead = createElment('tr')
     thead.appendChild(trHead)
-    const thTitle = createElment('th', data.title)
-    const thYear = createElment('th', data.date_part)
-    const thRating = createElment('th', data.rating)
+    const thTitle = createElment('th', 'Title')
+    const thYear = createElment('th', 'Year')
+    const thRating = createElment('th', 'Rating')
     trHead.append(thTitle, thYear, thRating)
     const tbody = createElment('tbody')
     for (let row of data) {

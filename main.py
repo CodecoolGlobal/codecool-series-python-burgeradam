@@ -30,7 +30,6 @@ def get_filtered_shows(user_input):
     return jsonify(filtered_shows)
 
 
-
 def main():
     app.run(debug=False)
 
