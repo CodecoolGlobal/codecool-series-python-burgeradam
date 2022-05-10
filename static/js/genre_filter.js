@@ -15,6 +15,7 @@ function dataHandling(element) {
             divCard.innerHTML = ''
             debugger
             createTable(data)
+            tdColorize()
         })
 }
 
@@ -24,6 +25,14 @@ buttons.forEach(element => {
     })
 })
 
+function tdColorize() {
+    const tdElements = document.querySelectorAll('td')
+    tdElements.forEach(element => {
+        element.addEventListener('click', () => {
+            element.classList.toggle('colorize')
+        })
+    })
+}
 
 function createTable(data) {
     const table = createElment('table')
