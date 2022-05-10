@@ -5,14 +5,14 @@ def get_shows():
     return data_manager.execute_select('SELECT id, title FROM shows;')
 
 
-def get_genres():
+def get_genres(show_count=3):
     return data_manager.execute_select('''
         SELECT genres.id, genres.name
         FROM genres
         INNER JOIN show_genres sg ON genres.id = sg.genre_id
         GROUP BY genres.id, genres.name
-        HAVING COUNT (sg.show_id) > 3
-        ORDER BY genres.name''')
+        HAVING COUNT (sg.show_id) > %(shows_count)s
+        ORDER BY genres.name''', {'shows_count': show_count})
 
 
 def get_shows_with_filter(user_input):
