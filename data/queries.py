@@ -17,7 +17,9 @@ def get_genres(show_count=3):
 
 def get_shows_with_filter(user_input):
     return data_manager.execute_select('''
-        SELECT title, EXTRACT (YEAR FROM year), ROUND(rating, 1) AS rating
+        SELECT title,
+        EXTRACT (YEAR FROM year) AS year,
+        ROUND(rating, 1) AS rating
         FROM shows
         INNER JOIN show_genres sg ON shows.id = sg.show_id
         WHERE sg.genre_id = %(user_input)s''', {'user_input': user_input})
