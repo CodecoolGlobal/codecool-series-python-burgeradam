@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, jsonify
 from data import queries
 import math
 from dotenv import load_dotenv
@@ -16,6 +16,18 @@ def index():
 @app.route('/design')
 def design():
     return render_template('design.html')
+
+
+@app.route('/show-info')
+def test():
+    titles = queries.get_shows_with_genre_filter()
+    return render_template('show-info.html', titles=titles)
+
+
+@app.route('/api/show-info/<show_id>')
+def get_show_info(show_id):
+    query = queries.get_show_info(show_id)
+    return jsonify(query)
 
 
 def main():
